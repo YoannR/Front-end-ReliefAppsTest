@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+  <input type="url" id="myinput" name="myinput">
+  <input type="submit" value="Submit" onclick="myFunction()">
+
+  <p id="page"></p>
+
+  <script>
+  function myFunction() 
+    {
+    localStorage.clear()
+    var input = String(document.getElementById("myinput").value)
+    var id = input.slice(-11);
+    var embed = 'https://www.youtube.com/embed/' + id
+    var video = '<iframe width="1004" height="565" src="' + input + '" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+    localStorage.url = localStorage.url+'<p id=input onclick="myFunction2(this.innerHTML)">'+input+'</p>'
+    
+    document.getElementById("page").innerHTML = "You are watching: " + input + video + '<ul>' + localStorage.url + '</ul>'
+    }
+    
+    function myFunction2(elmnt) {
+      elmnt.value = input
+      document.getElementById("myinput").value = elmnt ;
+      myFunction()
+    }
+
+  </script>
+
+</body>
+
+
+</html>
